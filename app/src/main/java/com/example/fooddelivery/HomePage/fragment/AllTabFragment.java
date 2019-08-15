@@ -4,31 +4,20 @@ package com.example.fooddelivery.HomePage.fragment;
 // Xiao: implemented data request and onClickListener for each adapter.
 
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.fooddelivery.HomePage.adapter.AllFoodAdapter;
 import com.example.fooddelivery.MainActivity;
 import com.example.fooddelivery.R;
-import com.example.fooddelivery.controller.VolleyController;
 import com.example.fooddelivery.model.Food;
-import com.example.guanzhuli.foody.HomePage.HomePageActivity;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -102,22 +91,21 @@ public class AllTabFragment extends Fragment {
 
 
     private void objRequestMethod(){
-        MainActivity.showPDialog();
-        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, buildUrl(), null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject jsonObject) {
-                Log.d(TAG, jsonObject.toString());
+                MainActivity.showPDialog();
+
+
+
 
                 try{
-                    JSONArray foodsJsonArr = jsonObject.getJSONArray("Food");
-                    for (int i = 0; i < foodsJsonArr.length(); i++) {
-                        JSONObject c = foodsJsonArr.getJSONObject(i);
-                        String id = c.getString("FoodId");
-                        String name = c.getString("FoodName");
-                        String recepiee = c.getString("FoodRecepiee");
-                        String price = c.getString("FoodPrice");
-                        String category = c.getString("FoodCategory");
-                        String thumb = c.getString("FoodThumb");
+
+                    for (int i = 0; i <10; i++) {
+                        //JSONObject c = foodsJsonArr.getJSONObject(i);
+                        String id = String.valueOf(i);
+                        String name = "Food"+i;
+                        String recepiee = "None";
+                        String price = "100";
+                        String category = "Category"+(i%3);
+                        String thumb = "FoodThumb";
                         final Food curFood = new Food();
                         curFood.setCategory(category);
                         curFood.setName(name);
@@ -129,42 +117,100 @@ public class AllTabFragment extends Fragment {
                         foods.add(curFood);
 //                        Log.e("Current Food", curFood.getName());
 
-                        ImageLoader imageLoader = VolleyController.getInstance().getImageLoader();
-                        imageLoader.get(thumb, new ImageLoader.ImageListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                Log.e(TAG, "Image Load Error: " + error.getMessage());
-                            }
-                            @Override
-                            public void onResponse(ImageLoader.ImageContainer response, boolean arg1) {
-                                if (response.getBitmap() != null) {
-                                    curFood.setImage(response.getBitmap());
-//                                    Log.e("SET IMAGE", curFood.getName());
-                                    adapter.notifyData(foods);
-                                }
-                            }
-                        });
+//                        ImageLoader imageLoader = VolleyController.getInstance().getImageLoader();
+//                        imageLoader.get(thumb, new ImageLoader.ImageListener() {
+//                            @Override
+//                            public void onErrorResponse(VolleyError error) {
+//                                Log.e(TAG, "Image Load Error: " + error.getMessage());
+//                            }
+//                            @Override
+//                            public void onResponse(ImageLoader.ImageContainer response, boolean arg1) {
+//                                if (response.getBitmap() != null) {
+//                                    curFood.setImage(response.getBitmap());
+////                                    Log.e("SET IMAGE", curFood.getName());
+//                                    adapter.notifyData(foods);
+//                                }
+//                            }
+//                        });
+                        Bitmap largeIcon = BitmapFactory.decodeResource(getResources(), R.drawable.logo1);
+                        curFood.setImage(largeIcon);
                         foods.get(i).setImage(curFood.getImage());
                     }
 
                 }catch (Exception e){
                     System.out.println(e);
                 }
-                MainActivity.disPDialog();
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError volleyError) {
-                VolleyLog.d(TAG, "ERROR" + volleyError.getMessage());
-                Toast.makeText(getActivity(), volleyError.getMessage(), Toast.LENGTH_SHORT).show();
-                MainActivity.disPDialog();
-            }
-        });
-        VolleyController.getInstance().addToRequestQueue(jsonObjReq);
+
+
+
+
+
+
+
+//        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, buildUrl(), null, new Response.Listener<JSONObject>() {
+//            @Override
+//            public void onResponse(JSONObject jsonObject) {
+//                Log.d(TAG, jsonObject.toString());
+//
+//                try{
+//                    JSONArray foodsJsonArr = jsonObject.getJSONArray("Food");
+//                    for (int i = 0; i < foodsJsonArr.length(); i++) {
+//                        JSONObject c = foodsJsonArr.getJSONObject(i);
+//                        String id = c.getString("FoodId");
+//                        String name = c.getString("FoodName");
+//                        String recepiee = c.getString("FoodRecepiee");
+//                        String price = c.getString("FoodPrice");
+//                        String category = c.getString("FoodCategory");
+//                        String thumb = c.getString("FoodThumb");
+//                        final Food curFood = new Food();
+//                        curFood.setCategory(category);
+//                        curFood.setName(name);
+//                        curFood.setRecepiee(recepiee);
+//                        curFood.setPrice(Double.valueOf(price));
+//                        curFood.setId(Integer.valueOf(id));
+//                        curFood.setImageUrl(thumb);
+//
+//                        foods.add(curFood);
+////                        Log.e("Current Food", curFood.getName());
+//
+//                        ImageLoader imageLoader = VolleyController.getInstance().getImageLoader();
+//                        imageLoader.get(thumb, new ImageLoader.ImageListener() {
+//                            @Override
+//                            public void onErrorResponse(VolleyError error) {
+//                                Log.e(TAG, "Image Load Error: " + error.getMessage());
+//                            }
+//                            @Override
+//                            public void onResponse(ImageLoader.ImageContainer response, boolean arg1) {
+//                                if (response.getBitmap() != null) {
+//                                    curFood.setImage(response.getBitmap());
+////                                    Log.e("SET IMAGE", curFood.getName());
+//                                    adapter.notifyData(foods);
+//                                }
+//                            }
+//                        });
+//                        foods.get(i).setImage(curFood.getImage());
+//                    }
+//
+//                }catch (Exception e){
+//                    System.out.println(e);
+//                }
+//                MainActivity.disPDialog();
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError volleyError) {
+//                VolleyLog.d(TAG, "ERROR" + volleyError.getMessage());
+//                Toast.makeText(getActivity(), volleyError.getMessage(), Toast.LENGTH_SHORT).show();
+//                MainActivity.disPDialog();
+//            }
+//        });
+//        VolleyController.getInstance().addToRequestQueue(jsonObjReq);
+
+        MainActivity.disPDialog();
     }
 
     private String buildUrl() {
-        return baseUrl + HomePageActivity.City;
+        return baseUrl + "Pritam";
     }
 
 }

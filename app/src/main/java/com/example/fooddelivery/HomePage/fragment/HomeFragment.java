@@ -41,9 +41,9 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         mSectionsPagerAdapter =  new SectionsPagerAdapter(getChildFragmentManager());
-        mTabLayout = (TabLayout) view.findViewById(R.id.home_tabLayout);
+        mTabLayout = view.findViewById(R.id.home_tabLayout);
         mTabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-        mViewPager = (ViewPager) view.findViewById(R.id.home_pager);
+        mViewPager = view.findViewById(R.id.home_pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -66,9 +66,9 @@ public class HomeFragment extends Fragment {
         });
 
 
-        locationView = (TextView) view.findViewById(R.id.home_TV_Location);
+        locationView = view.findViewById(R.id.home_TV_Location);
         locationView.setText("Pritam");
-        changeLocView = (TextView) view.findViewById(R.id.home_TV_notHere);
+        changeLocView = view.findViewById(R.id.home_TV_notHere);
 
 //        changeLocView.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -117,12 +117,12 @@ public class HomeFragment extends Fragment {
                 case 0:
                     AllTabFragment tab1 = new AllTabFragment();
                     return tab1;
-//                case 1:
-//                    VegTabFragment tab2 = new VegTabFragment();
-//                    return tab2;
-//                case 2:
-//                    NonVegTabFragment tab3 = new NonVegTabFragment();
-//                    return tab3;
+                case 1:
+                    //VegTabFragment tab2 = new VegTabFragment();
+                    return null;
+                case 2:
+                    //NonVegTabFragment tab3 = new NonVegTabFragment();
+                    return null;
                 default:
                     break;
             }
@@ -131,7 +131,7 @@ public class HomeFragment extends Fragment {
 
         @Override
         public int getCount() {
-            return 3;
+            return 1;
         }
 
         @Override
