@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,13 +16,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.ImageLoader;
+import com.example.fooddelivery.CartPage.CartActivity;
+import com.example.fooddelivery.R;
 import com.example.fooddelivery.controller.ShoppingCartItem;
-import com.example.fooddelivery.controller.VolleyController;
 import com.example.fooddelivery.model.Food;
-import com.example.guanzhuli.foody.CartPage.CartActivity;
-import com.example.guanzhuli.foody.R;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -85,20 +81,20 @@ public class FoodDetailFragment extends Fragment {
         mTextPrice.setText(String.valueOf(food.getPrice()));
         collapsingToolbarLayout.setTitle(food.getName());
 
-        ImageLoader imageLoader = VolleyController.getInstance().getImageLoader();
-        imageLoader.get(getArguments().getString("foodImage"), new ImageLoader.ImageListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e(TAG, "Image Load Error: " + error.getMessage());
-            }
-            @Override
-            public void onResponse(ImageLoader.ImageContainer response, boolean arg1) {
-                if (response.getBitmap() != null) {
-                    food.setImage(response.getBitmap());
-                    mImageView.setImageBitmap(food.getImage());
-                }
-            }
-        });
+//        ImageLoader imageLoader = VolleyController.getInstance().getImageLoader();
+//        imageLoader.get(getArguments().getString("foodImage"), new ImageLoader.ImageListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                Log.e(TAG, "Image Load Error: " + error.getMessage());
+//            }
+//            @Override
+//            public void onResponse(ImageLoader.ImageContainer response, boolean arg1) {
+//                if (response.getBitmap() != null) {
+//                    food.setImage(response.getBitmap());
+//                    mImageView.setImageBitmap(food.getImage());
+//                }
+//            }
+//        });
     }
 
     private void setButtonListener(){

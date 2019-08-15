@@ -12,8 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.NetworkImageView;
+import com.example.fooddelivery.R;
 import com.example.fooddelivery.model.Food;
-import com.example.guanzhuli.foody.R;
 
 import java.util.ArrayList;
 
@@ -56,7 +56,7 @@ public class AllFoodAdapter extends RecyclerView.Adapter<AllHolder> implements V
 
     @Override
     public int getItemCount() {
-        return foods.size();
+        return 10;
     }
 
     public void notifyData(ArrayList<Food> foods) {
