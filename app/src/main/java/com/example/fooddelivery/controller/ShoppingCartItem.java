@@ -218,7 +218,7 @@ public class ShoppingCartItem {
                 VolleyLog.d("Place_Order", "ERROR" + volleyError.getMessage());
             }
         });
-        VolleyController.getInstance().addToRequestQueue(stringRequest);
+        //VolleyController.getInstance().addToRequestQueue(stringRequest);
     }
 
     private String buildUrl(Food food, int cnt, String addr, String mobile) {
