@@ -1,5 +1,5 @@
 package com.example.fooddelivery.controller;
-// Done by Xiao.
+
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -8,25 +8,15 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.StringRequest;
 import com.example.fooddelivery.R;
 import com.example.fooddelivery.model.Food;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 
 import static com.example.fooddelivery.controller.DBHelper.TABLENAME;
 
-/**
- * Created by liuxi on 2017/1/16.
- */
 
 public class ShoppingCartItem {
     private static ArrayList<Integer> foodsId;
@@ -88,22 +78,6 @@ public class ShoppingCartItem {
                     curFood.setPrice(curPrice);
                     curFood.setCategory(curCategory);
                     curFood.setImageUrl(curUrl);
-
-//                    ImageLoader imageLoader = VolleyController.getInstance().getImageLoader();
-//                    imageLoader.get(curFood.getImageUrl(), new ImageLoader.ImageListener() {
-//                        @Override
-//                        public void onErrorResponse(VolleyError error) {
-//                            Log.e("INIT FOOD", "Image Load Error: " + error.getMessage());
-//                        }
-//                        @Override
-//                        public void onResponse(ImageLoader.ImageContainer response, boolean arg1) {
-//                            if (response.getBitmap() != null) {
-//                                curFood.setImage(response.getBitmap());
-//                                idList.add(curId);
-//                                foodInDb.put(curFood, curQuantity);
-//                            }
-//                        }
-//                    });
                     Bitmap largeIcon = BitmapFactory.decodeResource(Resources.getSystem(), R.drawable.logo1);
                     curFood.setImage(largeIcon);
                     idList.add(curId);
@@ -195,60 +169,5 @@ public class ShoppingCartItem {
     }
 
 
-    public void placeOrder(String addr, String mobile){
-        Iterator it = foodMap.keySet().iterator();
-        while (it.hasNext()){
-            Food curFood = (Food) it.next();
-            int cnt = foodMap.get(curFood);
-            Log.e(curFood.getName(), "" + cnt);
-            objRequestMethod(curFood, cnt, addr, mobile);
-        }
-    }
-
-
-    private void objRequestMethod(Food curFood, int cnt, String addr, String mobile){
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, buildUrl(curFood, cnt, addr, mobile), new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Log.d("Place_Order", response);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError volleyError) {
-                VolleyLog.d("Place_Order", "ERROR" + volleyError.getMessage());
-            }
-        });
-        //VolleyController.getInstance().addToRequestQueue(stringRequest);
-    }
-
-    private String buildUrl(Food food, int cnt, String addr, String mobile) {
-
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date curDate = new  Date(System.currentTimeMillis());
-        String curTime = formatter.format(curDate);
-        String tmpUrl = "http://rjtmobile.com/ansari/fos/fosapp/order_request.php?"
-                + "&order_category=" + food.getCategory()
-                + "&order_name=" + food.getName()
-                + "&order_quantity=" + cnt
-                + "&total_order=" + (cnt * food.getPrice())
-                + "&order_delivery_add=" + addr
-                + "&order_date=" + curTime
-                + "&user_phone=" + mobile;
-        StringBuilder sb = new StringBuilder();
-        for (int i=0; i<tmpUrl.length(); i++){
-            if (tmpUrl.charAt(i) == ' '){
-                sb.append("%20");
-            }
-            else {
-                sb.append(tmpUrl.charAt(i));
-            }
-        }
-        Log.e("Build URL", sb.toString());
-        return sb.toString();
-    }
-
-    public void addToDb(Context context){
-        DBManipulation.getInstance(context).addAll();
-    }
 
 }

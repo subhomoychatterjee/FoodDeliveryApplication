@@ -16,9 +16,7 @@ import static com.example.fooddelivery.controller.DBHelper.PRICE;
 import static com.example.fooddelivery.controller.DBHelper.QUANTITY;
 import static com.example.fooddelivery.controller.DBHelper.TABLENAME;
 
-/**
- * Created by Guanzhu Li on 1/13/2017.
- */
+
 public class DBManipulation {
     private DBHelper mDBHelper;
     private SQLiteDatabase mSQLiteDatabase;

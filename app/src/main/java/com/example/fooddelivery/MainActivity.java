@@ -2,6 +2,7 @@ package com.example.fooddelivery;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -32,11 +33,14 @@ public class MainActivity extends AppCompatActivity {
         pDialog.setMessage("Loading...");
         pDialog.setCancelable(false);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("  Just Eat");
+        toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        cartNumber = (TextView) findViewById(R.id.cart_item_number);
+
+        FloatingActionButton fab = findViewById(R.id.fab);
+        cartNumber = findViewById(R.id.cart_item_number);
         cartNumber.setText(String.valueOf(ShoppingCartItem.getInstance(this).getSize()));
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

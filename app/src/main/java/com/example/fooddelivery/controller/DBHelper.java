@@ -5,9 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-/**
- * Created by Guanzhu Li on 1/13/2017.
- */
+
 
 //Id, Name, quantity, total, category, date, address, mobile, status
 public class DBHelper extends SQLiteOpenHelper {

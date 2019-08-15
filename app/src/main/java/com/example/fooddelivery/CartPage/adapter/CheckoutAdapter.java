@@ -11,9 +11,7 @@ import com.example.fooddelivery.R;
 import com.example.fooddelivery.controller.ShoppingCartItem;
 import com.example.fooddelivery.model.Food;
 
-/**
- * Created by Guanzhu Li on 1/16/2017.
- */
+
 public class CheckoutAdapter extends RecyclerView.Adapter<CheckoutHolder>{
 
     private Context mContext;
@@ -50,7 +48,7 @@ public class CheckoutAdapter extends RecyclerView.Adapter<CheckoutHolder>{
         int id = ShoppingCartItem.getInstance(mContext).getFoodInCart().get(position);
         final Food curFood = ShoppingCartItem.getInstance(mContext).getFoodById(id);
         final int curFoodNumber = ShoppingCartItem.getInstance(mContext).getFoodNumber(curFood);
-        holder.mTextName.setText(((Food) curFood).getName());
+        holder.mTextName.setText(curFood.getName());
         holder.mTextPrice.setText(String.valueOf(curFoodNumber * curFood.getPrice()));
         holder.mTextQuantity.setText(String.valueOf(curFoodNumber));
     }
@@ -66,8 +64,8 @@ class CheckoutHolder extends RecyclerView.ViewHolder {
 
     public CheckoutHolder(View itemView) {
         super(itemView);
-        mTextName = (TextView) itemView.findViewById(R.id.checkout_name);
-        mTextPrice = (TextView) itemView.findViewById(R.id.checkout_price);
-        mTextQuantity = (TextView) itemView.findViewById(R.id.checkout_quantity);
+        mTextName = itemView.findViewById(R.id.checkout_name);
+        mTextPrice = itemView.findViewById(R.id.checkout_price);
+        mTextQuantity = itemView.findViewById(R.id.checkout_quantity);
     }
 }

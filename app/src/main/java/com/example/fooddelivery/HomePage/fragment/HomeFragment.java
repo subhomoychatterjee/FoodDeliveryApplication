@@ -6,6 +6,7 @@ package com.example.fooddelivery.HomePage.fragment;
 // Xiao: Implemented change city function.
 //
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -70,38 +71,6 @@ public class HomeFragment extends Fragment {
         locationView.setText("Pritam");
         changeLocView = view.findViewById(R.id.home_TV_notHere);
 
-//        changeLocView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                LayoutInflater inflater = getActivity().getLayoutInflater();
-//                View layout = inflater.inflate(R.layout.dialog_set_city,(ViewGroup) view.findViewById(R.id.dialog));
-//                new AlertDialog.Builder(getActivity()).setTitle("Please Input City Name").setIcon(
-//                        android.R.drawable.ic_dialog_info).setView(
-//                        layout).setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-//                        Dialog dialog = (Dialog) dialogInterface;
-//                        EditText inputCity = (EditText) dialog.findViewById(R.id.dialog_et_city);
-//                        if (inputCity.getText().toString().equalsIgnoreCase("banglore")){
-//                            HomePageActivity.City = "banglore";
-//                            getActivity().recreate();
-//                        }
-//                        else if (inputCity.getText().toString().equalsIgnoreCase("delhi")){
-//                            HomePageActivity.City = "delhi";
-//                            getActivity().recreate();
-//                        }
-//                        else {
-//                            String SorryInfo = "We Currently Don't Have Service At Your Location!";
-//                            new AlertDialog.Builder(getActivity()).setTitle("Sorry!").setIcon(
-//                                    android.R.drawable.ic_dialog_info)
-//                                    .setMessage(SorryInfo)
-//                                    .setNegativeButton("Cancel", null).show();
-//                        }
-//                    }
-//                })
-//                        .setNegativeButton("Cancel", null).show();
-//            }
-//        });
         return view;
     }
 
@@ -115,14 +84,14 @@ public class HomeFragment extends Fragment {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    AllTabFragment tab1 = new AllTabFragment();
+                    AllTabFragment tab1 = new AllTabFragment(R.color.colorPrimary);
                     return tab1;
                 case 1:
-                    //VegTabFragment tab2 = new VegTabFragment();
-                    return null;
+                    AllTabFragment tab2 = new AllTabFragment(Color.GREEN);
+                    return tab2;
                 case 2:
-                    //NonVegTabFragment tab3 = new NonVegTabFragment();
-                    return null;
+                    AllTabFragment tab3 = new AllTabFragment(Color.RED);
+                    return tab3;
                 default:
                     break;
             }
@@ -131,7 +100,7 @@ public class HomeFragment extends Fragment {
 
         @Override
         public int getCount() {
-            return 1;
+            return 3;
         }
 
         @Override
