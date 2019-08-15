@@ -6,5 +6,7 @@
     <color name="colorGreen"> #009900</color>
     <color name="colorYellow"> #ff8000</color>
 
+    <color name="colorPrimaryLight">#FFCDD2</color>
+
 </resources>
 

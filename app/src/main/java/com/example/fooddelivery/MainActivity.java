@@ -1,15 +1,21 @@
 package com.example.fooddelivery;
 
-import android.content.Context;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Button;
+import android.widget.TextView;
+
+import com.example.fooddelivery.controller.ShoppingCartItem;
 
 public class MainActivity extends AppCompatActivity {
 
 
+    private static ProgressDialog pDialog;
+
+    public static TextView cartNumber;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,9 +23,35 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void init(){
+        pDialog = new ProgressDialog(this);
+        pDialog.setMessage("Loading...");
+        pDialog.setCancelable(false);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        cartNumber = (TextView) findViewById(R.id.cart_item_number);
+        cartNumber.setText(String.valueOf(ShoppingCartItem.getInstance(this).getSize()));
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               // startActivity(new Intent(HomePageActivity.this, CartActivity.class));
+            }
+        });
+    }
 
-
+    public static void showPDialog(){
+        if (!pDialog.isShowing()){
+            pDialog.show();
         }
+    }
+    public static void disPDialog(){
+        if (pDialog.isShowing()){
+            pDialog.dismiss();
+        }
+    }
+
+}
 
