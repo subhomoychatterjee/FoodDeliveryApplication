@@ -15,7 +15,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.fooddelivery.HomePage.adapter.AllFoodAdapter;
-import com.example.fooddelivery.MainActivity;
 import com.example.fooddelivery.R;
 import com.example.fooddelivery.model.Food;
 
@@ -96,7 +95,7 @@ public class AllTabFragment extends Fragment {
 
 
     private void objRequestMethod(){
-                MainActivity.showPDialog();
+                //MainActivity.showPDialog();
 
 
 
@@ -130,7 +129,69 @@ public class AllTabFragment extends Fragment {
 
 
 
-        MainActivity.disPDialog();
+
+
+
+//        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, buildUrl(), null, new Response.Listener<JSONObject>() {
+//            @Override
+//            public void onResponse(JSONObject jsonObject) {
+//                Log.d(TAG, jsonObject.toString());
+//
+//                try{
+//                    JSONArray foodsJsonArr = jsonObject.getJSONArray("Food");
+//                    for (int i = 0; i < foodsJsonArr.length(); i++) {
+//                        JSONObject c = foodsJsonArr.getJSONObject(i);
+//                        String id = c.getString("FoodId");
+//                        String name = c.getString("FoodName");
+//                        String recepiee = c.getString("FoodRecepiee");
+//                        String price = c.getString("FoodPrice");
+//                        String category = c.getString("FoodCategory");
+//                        String thumb = c.getString("FoodThumb");
+//                        final Food curFood = new Food();
+//                        curFood.setCategory(category);
+//                        curFood.setName(name);
+//                        curFood.setRecepiee(recepiee);
+//                        curFood.setPrice(Double.valueOf(price));
+//                        curFood.setId(Integer.valueOf(id));
+//                        curFood.setImageUrl(thumb);
+//
+//                        foods.add(curFood);
+////                        Log.e("Current Food", curFood.getName());
+//
+//                        ImageLoader imageLoader = VolleyController.getInstance().getImageLoader();
+//                        imageLoader.get(thumb, new ImageLoader.ImageListener() {
+//                            @Override
+//                            public void onErrorResponse(VolleyError error) {
+//                                Log.e(TAG, "Image Load Error: " + error.getMessage());
+//                            }
+//                            @Override
+//                            public void onResponse(ImageLoader.ImageContainer response, boolean arg1) {
+//                                if (response.getBitmap() != null) {
+//                                    curFood.setImage(response.getBitmap());
+////                                    Log.e("SET IMAGE", curFood.getName());
+//                                    adapter.notifyData(foods);
+//                                }
+//                            }
+//                        });
+//                        foods.get(i).setImage(curFood.getImage());
+//                    }
+//
+//                }catch (Exception e){
+//                    System.out.println(e);
+//                }
+//                MainActivity.disPDialog();
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError volleyError) {
+//                VolleyLog.d(TAG, "ERROR" + volleyError.getMessage());
+//                Toast.makeText(getActivity(), volleyError.getMessage(), Toast.LENGTH_SHORT).show();
+//                MainActivity.disPDialog();
+//            }
+//        });
+//        VolleyController.getInstance().addToRequestQueue(jsonObjReq);
+
+        //MainActivity.disPDialog();
     }
 
     private String buildUrl() {
