@@ -1,6 +1,4 @@
 package com.example.fooddelivery.CartPage.adapter;
-// Lily: Designed and coded base function for adapter.
-// Xiao: Changed functions and design based on different using.
 
 
 import android.content.Context;
@@ -22,9 +20,6 @@ import com.example.fooddelivery.R;
 import com.example.fooddelivery.controller.ShoppingCartItem;
 import com.example.fooddelivery.model.Food;
 
-/**
- * Created by Guanzhu Li on 1/15/2017.
- */
 public class CartAdapter extends RecyclerView.Adapter<CartHolder> implements View.OnClickListener{
     private Context mContext;
     private final String TAG = "ADAPTER";
@@ -136,15 +131,15 @@ class CartHolder extends RecyclerView.ViewHolder {
     TextView total_price;
     public CartHolder(View itemView) {
         super(itemView);
-        mTextName = (TextView) itemView.findViewById(R.id.cart_name);
-        mTextCategory = (TextView) itemView.findViewById(R.id.cart_category);
-        mTextPrice = (TextView) itemView.findViewById(R.id.cart_price);
-        mEditQuantity = (TextView) itemView.findViewById(R.id.cart_quantity);
-        mImage = (ImageView) itemView.findViewById(R.id.cart_image);
+        mTextName =  itemView.findViewById(R.id.cart_name);
+        mTextCategory = itemView.findViewById(R.id.cart_category);
+        mTextPrice =  itemView.findViewById(R.id.cart_price);
+        mEditQuantity =  itemView.findViewById(R.id.cart_quantity);
+        mImage = itemView.findViewById(R.id.cart_image);
 
 
-        btn_minus = (Button) itemView.findViewById(R.id.cart_btn_minus);
-        btn_plus = (Button) itemView.findViewById(R.id.cart_btn_plus);
+        btn_minus = itemView.findViewById(R.id.cart_btn_minus);
+        btn_plus = itemView.findViewById(R.id.cart_btn_plus);
 
 
 

@@ -1,11 +1,11 @@
 package com.example.fooddelivery.HomePage.fragment;
 
-// Lily: Designed UI. Set fragment replacement. Implemented custom animation.
-// Xiao: implemented data request and onClickListener for each adapter.
 
 
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,14 +20,13 @@ import com.example.fooddelivery.model.Food;
 
 import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class AllTabFragment extends Fragment {
 
 
     private String baseUrl = "http://rjtmobile.com/ansari/fos/fosapp/fos_food_loc.php?city=";
     private String TAG = "ALLFOOD";
+    private int color= R.color.colorPrimary;
 
 
     ArrayList<Food> foods = new ArrayList<>();
@@ -37,9 +36,14 @@ public class AllTabFragment extends Fragment {
     private RecyclerView.LayoutManager layoutManager;
 
 
+    public AllTabFragment(){
 
-    public AllTabFragment() {
+    }
+
+    @SuppressLint("ValidFragment")
+    public AllTabFragment(int color) {
         // Required empty public constructor
+        this.color=color;
     }
 
 
@@ -55,8 +59,9 @@ public class AllTabFragment extends Fragment {
         }
 
 
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerview_all);
+        mRecyclerView = view.findViewById(R.id.recyclerview_all);
         mRecyclerView.setHasFixedSize(false);
+        mRecyclerView.setBackgroundColor(color);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new AllFoodAdapter(getActivity(), foods);
         adapter.setOnItemClickListener(new AllFoodAdapter.OnRecyclerViewItemClickListener() {
@@ -97,14 +102,13 @@ public class AllTabFragment extends Fragment {
 
                 try{
 
-                    for (int i = 0; i <10; i++) {
-                        //JSONObject c = foodsJsonArr.getJSONObject(i);
+                    for (int i = 0; i <20; i++) {
                         String id = String.valueOf(i);
-                        String name = "Food"+i;
+                        String name = "Food "+i;
                         String recepiee = "None";
-                        String price = "100";
-                        String category = "Category"+(i%3);
-                        String thumb = "FoodThumb";
+                        String price = String.valueOf(i*100);
+                        String category = "Category "+(i%3);
+                        String thumb = "Pritam";
                         final Food curFood = new Food();
                         curFood.setCategory(category);
                         curFood.setName(name);
@@ -114,23 +118,6 @@ public class AllTabFragment extends Fragment {
                         curFood.setImageUrl(thumb);
 
                         foods.add(curFood);
-//                        Log.e("Current Food", curFood.getName());
-
-//                        ImageLoader imageLoader = VolleyController.getInstance().getImageLoader();
-//                        imageLoader.get(thumb, new ImageLoader.ImageListener() {
-//                            @Override
-//                            public void onErrorResponse(VolleyError error) {
-//                                Log.e(TAG, "Image Load Error: " + error.getMessage());
-//                            }
-//                            @Override
-//                            public void onResponse(ImageLoader.ImageContainer response, boolean arg1) {
-//                                if (response.getBitmap() != null) {
-//                                    curFood.setImage(response.getBitmap());
-////                                    Log.e("SET IMAGE", curFood.getName());
-//                                    adapter.notifyData(foods);
-//                                }
-//                            }
-//                        });
                         Bitmap largeIcon = BitmapFactory.decodeResource(getResources(), R.drawable.logo1);
                         curFood.setImage(largeIcon);
                         foods.get(i).setImage(curFood.getImage());
@@ -139,7 +126,6 @@ public class AllTabFragment extends Fragment {
                 }catch (Exception e){
                     System.out.println(e);
                 }
-
 
 
 

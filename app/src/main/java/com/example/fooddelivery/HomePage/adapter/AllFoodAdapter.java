@@ -1,6 +1,5 @@
 package com.example.fooddelivery.HomePage.adapter;
-// Lily: Designed and coded base function for adapter.
-// Xiao: Changed functions and design based on different using.
+
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -17,9 +16,7 @@ import com.example.fooddelivery.model.Food;
 
 import java.util.ArrayList;
 
-/**
- * Created by Guanzhu Li on 1/14/2017.
- */
+
 public class AllFoodAdapter extends RecyclerView.Adapter<AllHolder> implements View.OnClickListener{
     private Context mContext;
     ArrayList<Food> foods;
@@ -56,7 +53,7 @@ public class AllFoodAdapter extends RecyclerView.Adapter<AllHolder> implements V
 
     @Override
     public int getItemCount() {
-        return 10;
+        return foods.size();
     }
 
     public void notifyData(ArrayList<Food> foods) {
@@ -94,11 +91,11 @@ class AllHolder extends RecyclerView.ViewHolder {
     public AllHolder(View itemView) {
         super(itemView);
         // mImage = (NetworkImageView) itemView.findViewById(R.id.food_img);
-        mImageView = (ImageView) itemView.findViewById(R.id.food_img);
-        mTextId = (TextView) itemView.findViewById(R.id.food_id);
-        mTextName = (TextView) itemView.findViewById(R.id.food_name);
-        mTextPrice = (TextView) itemView.findViewById(R.id.food_price);
-        mTextId = (TextView) itemView.findViewById(R.id.food_id);
-        mTextCategory = (TextView) itemView.findViewById(R.id.food_category);
+        mImageView = itemView.findViewById(R.id.food_img);
+        mTextId = itemView.findViewById(R.id.food_id);
+        mTextName = itemView.findViewById(R.id.food_name);
+        mTextPrice = itemView.findViewById(R.id.food_price);
+        mTextId = itemView.findViewById(R.id.food_id);
+        mTextCategory = itemView.findViewById(R.id.food_category);
     }
 }

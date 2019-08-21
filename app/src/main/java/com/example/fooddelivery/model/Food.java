@@ -1,13 +1,9 @@
 package com.example.fooddelivery.model;
-// Lily: Designed and implemented Food class for future using.
-// Xiao: Added setImage function for storing image after ImageRequest finished.
 
 import android.graphics.Bitmap;
 
 
-/**
- * Created by Guanzhu Li on 1/13/2017.
- */
+
 public class Food {
     private int mId;
     private String mName;

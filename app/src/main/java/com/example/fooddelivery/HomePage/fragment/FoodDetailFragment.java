@@ -1,6 +1,4 @@
 package com.example.fooddelivery.HomePage.fragment;
-// Lily: Designed and initialized UI. Set fragment replacement and on button click listener.
-// Xiao: implemented view replacement based on bundle info passing from prev fragment and custom AlertDialog.
 
 
 import android.app.AlertDialog;
@@ -21,9 +19,7 @@ import com.example.fooddelivery.R;
 import com.example.fooddelivery.controller.ShoppingCartItem;
 import com.example.fooddelivery.model.Food;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class FoodDetailFragment extends Fragment {
     TextView mTextId, mTextRecipe, mTextCategory, mTextPrice;
     Button mButtonAdd;
@@ -57,14 +53,14 @@ public class FoodDetailFragment extends Fragment {
     }
 
     private void initView(){
-        collapsingToolbarLayout = (CollapsingToolbarLayout) view.findViewById(R.id.food_detail_collapsing_toolbar);
+        collapsingToolbarLayout =  view.findViewById(R.id.food_detail_collapsing_toolbar);
         collapsingToolbarLayout.setTitle("Food Name");
-        mTextId = (TextView) view.findViewById(R.id.food_detail_id);
-        mTextRecipe = (TextView) view.findViewById(R.id.food_detail_recipe);
-        mTextCategory = (TextView) view.findViewById(R.id.food_detail_category);
-        mTextPrice = (TextView) view.findViewById(R.id.food_detail_price);
-        mButtonAdd = (Button) view.findViewById(R.id.food_detail_add);
-        mImageView = (ImageView) view.findViewById(R.id.food_detail_image);
+        mTextId = view.findViewById(R.id.food_detail_id);
+        mTextRecipe = view.findViewById(R.id.food_detail_recipe);
+        mTextCategory = view.findViewById(R.id.food_detail_category);
+        mTextPrice = view.findViewById(R.id.food_detail_price);
+        mButtonAdd = view.findViewById(R.id.food_detail_add);
+        mImageView =  view.findViewById(R.id.food_detail_image);
     }
 
     private void initFoodInfo(){
@@ -81,20 +77,6 @@ public class FoodDetailFragment extends Fragment {
         mTextPrice.setText(String.valueOf(food.getPrice()));
         collapsingToolbarLayout.setTitle(food.getName());
 
-//        ImageLoader imageLoader = VolleyController.getInstance().getImageLoader();
-//        imageLoader.get(getArguments().getString("foodImage"), new ImageLoader.ImageListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Log.e(TAG, "Image Load Error: " + error.getMessage());
-//            }
-//            @Override
-//            public void onResponse(ImageLoader.ImageContainer response, boolean arg1) {
-//                if (response.getBitmap() != null) {
-//                    food.setImage(response.getBitmap());
-//                    mImageView.setImageBitmap(food.getImage());
-//                }
-//            }
-//        });
     }
 
     private void setButtonListener(){
@@ -103,7 +85,7 @@ public class FoodDetailFragment extends Fragment {
             public void onClick(View view) {
 
                 ShoppingCartItem.getInstance(getContext()).addToCart(food);
-                TextView cartNumber = (TextView)getActivity().findViewById(R.id.cart_item_number);
+                TextView cartNumber = getActivity().findViewById(R.id.cart_item_number);
                 cartNumber.setText(String.valueOf(ShoppingCartItem.getInstance(getContext()).getSize()));
 
                 new AlertDialog.Builder(getActivity()).setTitle("Successful!").setIcon(

@@ -1,7 +1,5 @@
 package com.example.fooddelivery.CartPage.fragment;
-// Lily: Designed UI and custom animation.
-//       Implemented fragment transmission.
-// Xiao: Finished view change based on in-cart items.
+
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -54,17 +52,17 @@ public class CartFragment extends Fragment {
 
     private void init(){
 
-        cart_total = (TextView) view.findViewById(R.id.cart_total_price);
+        cart_total = view.findViewById(R.id.cart_total_price);
         cart_total.setText(String.valueOf(ShoppingCartItem.getInstance(getContext()).getPrice()));
 
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerview_cart);
+        mRecyclerView = view.findViewById(R.id.recyclerview_cart);
         adapter = new CartAdapter(getContext());
         //initSwipe();
         mRecyclerView.setAdapter(adapter);
         mRecyclerView.setHasFixedSize(false);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        mButtonCancel = (Button)view.findViewById(R.id.cart_back);
+        mButtonCancel = view.findViewById(R.id.cart_back);
         mButtonCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,7 +70,7 @@ public class CartFragment extends Fragment {
             }
         });
 
-        mButtonCheckout = (Button)view.findViewById(R.id.cart_checkout);
+        mButtonCheckout = view.findViewById(R.id.cart_checkout);
 //        mButtonCheckout.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {

@@ -1,10 +1,7 @@
 package com.example.fooddelivery.model;
-// Lily: Designed and implemented Order class for future using
-// Xiao: Added getAddress and setAddress functions after web service been changed.
 
-/**
- * Created by Guanzhu Li on 1/13/2017.
- */
+
+
 public class Order {
     private int mId;
     private String mName;
