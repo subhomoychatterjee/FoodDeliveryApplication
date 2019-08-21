@@ -1,6 +1,5 @@
 package com.example.fooddelivery;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -16,7 +15,7 @@ import com.example.fooddelivery.controller.ShoppingCartItem;
 public class MainActivity extends AppCompatActivity {
 
 
-    private static ProgressDialog pDialog;
+    //private static ProgressDialog pDialog;
 
     public static TextView cartNumber;
     @Override
@@ -28,9 +27,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init(){
-        pDialog = new ProgressDialog(this);
-        pDialog.setMessage("Loading...");
-        pDialog.setCancelable(false);
+        //pDialog = new ProgressDialog(this);
+       // pDialog.setMessage("Loading...");
+        //pDialog.setCancelable(false);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -51,16 +50,16 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public static void showPDialog(){
-        if (!pDialog.isShowing()){
-            pDialog.show();
-        }
-    }
-    public static void disPDialog(){
-        if (pDialog.isShowing()){
-            pDialog.dismiss();
-        }
-    }
+//    public static void showPDialog(){
+//        if (!pDialog.isShowing()){
+//            pDialog.show();
+//        }
+//    }
+//    public static void disPDialog(){
+//        if (pDialog.isShowing()){
+//            pDialog.dismiss();
+//        }
+//    }
 
 }
 

@@ -15,7 +15,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.fooddelivery.HomePage.adapter.AllFoodAdapter;
-import com.example.fooddelivery.MainActivity;
 import com.example.fooddelivery.R;
 import com.example.fooddelivery.model.Food;
 
@@ -91,7 +90,7 @@ public class AllTabFragment extends Fragment {
 
 
     private void objRequestMethod(){
-                MainActivity.showPDialog();
+                //MainActivity.showPDialog();
 
 
 
@@ -206,7 +205,7 @@ public class AllTabFragment extends Fragment {
 //        });
 //        VolleyController.getInstance().addToRequestQueue(jsonObjReq);
 
-        MainActivity.disPDialog();
+        //MainActivity.disPDialog();
     }
 
     private String buildUrl() {
