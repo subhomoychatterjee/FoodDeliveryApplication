@@ -7,5 +7,7 @@
     <color name="colorYellow"> #ff8000</color>
     <color name="colorBlue"> #ccccff</color>
 
+    <color name="colorPrimaryLight">#FFCDD2</color>
+
 </resources>
 
