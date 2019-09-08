@@ -5,7 +5,6 @@ package com.example.fooddelivery.HomePage.fragment;
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -61,7 +60,8 @@ public class AllTabFragment extends Fragment {
 
         mRecyclerView = view.findViewById(R.id.recyclerview_all);
         mRecyclerView.setHasFixedSize(false);
-        mRecyclerView.setBackgroundColor(color);
+        //mRecyclerView.setBackgroundColor(color);
+
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new AllFoodAdapter(getActivity(), foods);
         adapter.setOnItemClickListener(new AllFoodAdapter.OnRecyclerViewItemClickListener() {

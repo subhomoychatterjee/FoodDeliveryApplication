@@ -4,13 +4,16 @@
              android:layout_height="match_parent"
              android:paddingStart="8dp"
              android:paddingEnd="8dp"
-    android:background="@color/colorAccent"
+             android:background="@color/colorAccent"
              tools:context="com.example.fooddelivery.HomePage.fragment.AllTabFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerview_all"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+        android:background="@drawable/rounded_button"
+        android:padding="4dp"
+        android:layout_marginBottom="5dp"/>
 
 </FrameLayout>
